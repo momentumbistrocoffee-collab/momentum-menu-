@@ -3,169 +3,319 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Momentum Coffee & Bistro</title>
+  <title>Momentum Coffee & Bistro Menu</title>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Georgia', serif;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
-      background: #f4eee6;
+      min-height: 100vh;
+      background: #efe5d8;
       color: #1f1f1f;
+      font-family: Georgia, 'Times New Roman', serif;
       display: flex;
       justify-content: center;
-      padding: 20px;
+      padding: 16px;
     }
 
-    .container {
+    .phone {
       width: 100%;
       max-width: 430px;
-      background: #fffaf5;
-      border-radius: 24px;
+      min-height: 92vh;
+      background: #fffaf3;
+      border-radius: 28px;
       overflow: hidden;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+      box-shadow: 0 16px 45px rgba(0,0,0,0.18);
+      position: relative;
     }
 
-    .hero {
-      background: linear-gradient(to bottom, rgba(0,0,0,0.65), rgba(0,0,0,0.45)),
-      url('https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=1200&auto=format&fit=crop');
-      background-size: cover;
-      background-position: center;
-      padding: 60px 24px;
+    .top {
+      padding: 28px 22px 18px;
       text-align: center;
-      color: white;
+      background: #171717;
+      color: #f6ead9;
     }
 
-    .hero h1 {
-      font-size: 34px;
+    .top h1 {
+      font-size: 30px;
+      letter-spacing: 2px;
+      margin-bottom: 4px;
+    }
+
+    .top p {
+      font-size: 14px;
+      color: #c9ad7a;
       letter-spacing: 1px;
-      margin-bottom: 8px;
     }
 
-    .hero p {
-      font-size: 15px;
-      opacity: 0.9;
-    }
-
-    .section {
-      padding: 24px;
-    }
-
-    .buttons {
+    .tabs {
       display: flex;
-      flex-direction: column;
-      gap: 14px;
-      margin-top: 10px;
+      gap: 7px;
+      padding: 14px;
+      background: #171717;
     }
 
-    .btn {
-      text-decoration: none;
-      background: #1f1f1f;
-      color: white;
-      padding: 16px;
-      border-radius: 16px;
-      text-align: center;
-      font-size: 17px;
-      transition: 0.2s ease;
-      border: 2px solid #1f1f1f;
+    .tab {
+      flex: 1;
+      border: 1px solid #c9ad7a;
+      color: #f6ead9;
+      background: transparent;
+      padding: 10px 6px;
+      border-radius: 999px;
+      font-size: 12px;
+      cursor: pointer;
     }
 
-    .btn:hover {
-      background: #c6a97a;
-      border-color: #c6a97a;
-      color: #1f1f1f;
+    .tab.active {
+      background: #c9ad7a;
+      color: #171717;
+      font-weight: bold;
     }
 
-    .menu-preview {
-      margin-top: 30px;
+    .slider {
+      display: flex;
+      width: 300%;
+      transition: transform 0.35s ease;
+      touch-action: pan-y;
     }
 
-    .menu-preview h2 {
-      margin-bottom: 14px;
-      font-size: 24px;
+    .page {
+      width: 33.3333%;
+      padding: 24px 20px 96px;
+    }
+
+    .page-title {
+      font-size: 26px;
+      margin-bottom: 6px;
+    }
+
+    .subtitle {
+      font-size: 13px;
+      color: #806844;
+      margin-bottom: 20px;
+    }
+
+    .category {
+      margin-bottom: 26px;
+    }
+
+    .category h3 {
+      font-size: 18px;
+      margin-bottom: 10px;
+      color: #2a2118;
+      border-left: 4px solid #c9ad7a;
+      padding-left: 10px;
     }
 
     .item {
       display: flex;
       justify-content: space-between;
-      padding: 12px 0;
-      border-bottom: 1px solid #ddd2c2;
-      font-size: 16px;
+      gap: 14px;
+      padding: 11px 0;
+      border-bottom: 1px solid #eadccb;
+      font-size: 15px;
+      line-height: 1.25;
     }
 
-    .footer {
-      text-align: center;
-      padding: 24px;
-      color: #777;
+    .item strong {
+      white-space: nowrap;
+      color: #111;
+    }
+
+    .controls {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(255,250,243,0.96);
+      border-top: 1px solid #eadccb;
+      padding: 14px 18px 18px;
+    }
+
+    .dots {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #d5c4ae;
+    }
+
+    .dot.active { background: #171717; }
+
+    .nav {
+      display: flex;
+      gap: 10px;
+    }
+
+    .nav button, .call {
+      flex: 1;
+      border: none;
+      background: #171717;
+      color: #fffaf3;
+      padding: 13px;
+      border-radius: 14px;
       font-size: 14px;
+      text-decoration: none;
+      text-align: center;
+      cursor: pointer;
     }
 
-    .tag {
-      margin-top: 12px;
-      display: inline-block;
-      background: rgba(255,255,255,0.18);
-      padding: 8px 14px;
-      border-radius: 999px;
+    .call {
+      background: #c9ad7a;
+      color: #171717;
+      font-weight: bold;
+    }
+
+    .note {
+      margin-top: 18px;
+      padding: 14px;
+      background: #f2e7d7;
+      border-radius: 16px;
       font-size: 13px;
-      letter-spacing: 0.5px;
+      color: #5d4930;
+      text-align: center;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <div class="hero">
+  <main class="phone">
+    <header class="top">
       <h1>MOMENTUM</h1>
-      <p>Coffee & Bistro</p>
-      <div class="tag">Italian Style • Pizza • Coffee • Dessert</div>
+      <p>COFFEE & BISTRO</p>
+    </header>
+
+    <div class="tabs">
+      <button class="tab active" onclick="goTo(0)">☕ Drinks</button>
+      <button class="tab" onclick="goTo(1)">🍕 Food</button>
+      <button class="tab" onclick="goTo(2)">🍰 Dessert</button>
     </div>
 
-    <div class="section">
-      <div class="buttons">
-        <a class="btn" href="#">📖 View Full Menu</a>
-        <a class="btn" href="tel:75070666">☎️ Call Now</a>
-        <a class="btn" href="https://www.facebook.com/profile.php?id=61566016979676">📘 Facebook Page</a>
-        <a class="btn" href="mailto:Momentumbistrocoffee@gmail.com">✉️ Email Us</a>
-        <a class="btn" href="#">📍 Find Location</a>
+    <section class="slider" id="slider">
+      <div class="page">
+        <h2 class="page-title">Coffee & Drinks</h2>
+        <p class="subtitle">Signature coffee, tea and cold drinks</p>
+
+        <div class="category">
+          <h3>Coffee</h3>
+          <div class="item"><span>Americano Single</span><strong>7,000₮</strong></div>
+          <div class="item"><span>Americano Double</span><strong>8,000₮</strong></div>
+          <div class="item"><span>Latte</span><strong>9,000₮</strong></div>
+          <div class="item"><span>Spanish Latte</span><strong>12,000₮</strong></div>
+          <div class="item"><span>Mocha Latte</span><strong>12,000₮</strong></div>
+        </div>
+
+        <div class="category">
+          <h3>Tea & Cold</h3>
+          <div class="item"><span>Ginger Lemon Tea</span><strong>9,000₮</strong></div>
+          <div class="item"><span>Iced Tea</span><strong>10,000₮</strong></div>
+          <div class="item"><span>Smoothie</span><strong>12,000₮</strong></div>
+          <div class="item"><span>Milkshake</span><strong>12,500₮</strong></div>
+          <div class="item"><span>Sparkling Lemonade</span><strong>9,000₮</strong></div>
+        </div>
       </div>
 
-      <div class="menu-preview">
-        <h2>Best Sellers</h2>
+      <div class="page">
+        <h2 class="page-title">Pizza & Pasta</h2>
+        <p class="subtitle">Italian style main menu</p>
 
-        <div class="item">
-          <span>Pepperoni Pizza</span>
-          <strong>56,000₮</strong>
+        <div class="category">
+          <h3>Pizza</h3>
+          <div class="item"><span>Meat Lovers Pizza</span><strong>58,000₮</strong></div>
+          <div class="item"><span>Pepperoni Pizza</span><strong>56,000₮</strong></div>
+          <div class="item"><span>Chicken BBQ Pizza</span><strong>56,000₮</strong></div>
+          <div class="item"><span>Hawaiian Pizza</span><strong>56,000₮</strong></div>
+          <div class="item"><span>Pizza Slice</span><strong>8,000₮</strong></div>
         </div>
 
-        <div class="item">
-          <span>Meat Lovers Pizza</span>
-          <strong>58,000₮</strong>
-        </div>
-
-        <div class="item">
-          <span>Spanish Latte</span>
-          <strong>12,000₮</strong>
-        </div>
-
-        <div class="item">
-          <span>Aglio e Olio Pasta</span>
-          <strong>16,900₮</strong>
-        </div>
-
-        <div class="item">
-          <span>Ice Cream Waffle</span>
-          <strong>9,900₮</strong>
+        <div class="category">
+          <h3>Pasta</h3>
+          <div class="item"><span>Meatball Pasta</span><strong>18,900₮</strong></div>
+          <div class="item"><span>Carbonara Pasta</span><strong>18,900₮</strong></div>
+          <div class="item"><span>Alfredo Pasta</span><strong>18,900₮</strong></div>
+          <div class="item"><span>Aglio e Olio Pasta</span><strong>16,900₮</strong></div>
         </div>
       </div>
-    </div>
 
-    <div class="footer">
-      Momentum Coffee & Bistro<br>
-      Altjin Bombogor Shopping Center<br>
-      ☎️ 75070666
+      <div class="page">
+        <h2 class="page-title">Dessert & Breakfast</h2>
+        <p class="subtitle">Morning menu and sweet specials</p>
+
+        <div class="category">
+          <h3>Breakfast</h3>
+          <div class="item"><span>French Toast</span><strong>11,900₮</strong></div>
+          <div class="item"><span>Full English Breakfast</span><strong>18,900₮</strong></div>
+        </div>
+
+        <div class="category">
+          <h3>Yogurt & Dessert</h3>
+          <div class="item"><span>Fruit Yogurt</span><strong>5,000₮</strong></div>
+          <div class="item"><span>Berry Shock</span><strong>9,900₮</strong></div>
+          <div class="item"><span>Fruit Creamy Yogurt</span><strong>10,500₮</strong></div>
+          <div class="item"><span>Ice Cream Waffle</span><strong>9,900₮</strong></div>
+          <div class="item"><span>Green Detox</span><strong>10,000₮</strong></div>
+        </div>
+
+        <div class="note">
+          📍 Altjin Bombogor Shopping Center<br>
+          ☎️ 75070666<br>
+          ✉️ Momentumbistrocoffee@gmail.com
+        </div>
+      </div>
+    </section>
+
+    <div class="controls">
+      <div class="dots">
+        <span class="dot active"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+      </div>
+      <div class="nav">
+        <button onclick="prevPage()">← Back</button>
+        <a class="call" href="tel:75070666">Call</a>
+        <button onclick="nextPage()">Next →</button>
+      </div>
     </div>
-  </div>
+  </main>
+
+  <script>
+    let current = 0;
+    const slider = document.getElementById('slider');
+    const tabs = document.querySelectorAll('.tab');
+    const dots = document.querySelectorAll('.dot');
+
+    function update() {
+      slider.style.transform = `translateX(-${current * 33.3333}%)`;
+      tabs.forEach((tab, i) => tab.classList.toggle('active', i === current));
+      dots.forEach((dot, i) => dot.classList.toggle('active', i === current));
+    }
+
+    function goTo(index) {
+      current = Math.max(0, Math.min(2, index));
+      update();
+    }
+
+    function nextPage() {
+      current = current === 2 ? 0 : current + 1;
+      update();
+    }
+
+    function prevPage() {
+      current = current === 0 ? 2 : current - 1;
+      update();
+    }
+
+    let startX = 0;
+    slider.addEventListener('touchstart', e => startX = e.touches[0].clientX);
+    slider.addEventListener('touchend', e => {
+      const endX = e.changedTouches[0].clientX;
+      if (startX - endX > 50) nextPage();
+      if (endX - startX > 50) prevPage();
+    });
+  </script>
 </body>
 </html>
