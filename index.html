@@ -1,325 +1,427 @@
 <!DOCTYPE html>
 <html lang="mn">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Momentum Coffee & Bistro Menu</title>
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Momentum Coffee & Bistro</title>
 
-    body {
-      min-height: 100vh;
-      background: #efe5d8;
-      color: #1f1f1f;
-      font-family: Georgia, 'Times New Roman', serif;
-      display: flex;
-      justify-content: center;
-      padding: 16px;
-    }
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
 
-    .phone {
-      width: 100%;
-      max-width: 430px;
-      min-height: 92vh;
-      background: #fffaf3;
-      border-radius: 28px;
-      overflow: hidden;
-      box-shadow: 0 16px 45px rgba(0,0,0,0.18);
-      position: relative;
-    }
+body{
+font-family:Georgia,serif;
+background:#f5ead8;
+color:#111;
+overflow-x:hidden;
+}
 
-    .top {
-      padding: 28px 22px 18px;
-      text-align: center;
-      background: #171717;
-      color: #f6ead9;
-    }
+.slider{
+display:flex;
+width:500vw;
+transition:0.5s ease;
+}
 
-    .top h1 {
-      font-size: 30px;
-      letter-spacing: 2px;
-      margin-bottom: 4px;
-    }
+.page{
+width:100vw;
+min-height:100vh;
+padding:25px;
+background:#f7eedf;
+border-right:1px solid #d4b06b;
+position:relative;
+}
 
-    .top p {
-      font-size: 14px;
-      color: #c9ad7a;
-      letter-spacing: 1px;
-    }
+.top-title{
+text-align:center;
+margin-bottom:25px;
+}
 
-    .tabs {
-      display: flex;
-      gap: 7px;
-      padding: 14px;
-      background: #171717;
-    }
+.logo{
+width:180px;
+margin:auto;
+display:block;
+}
 
-    .tab {
-      flex: 1;
-      border: 1px solid #c9ad7a;
-      color: #f6ead9;
-      background: transparent;
-      padding: 10px 6px;
-      border-radius: 999px;
-      font-size: 12px;
-      cursor: pointer;
-    }
+.gold{
+color:#b8862f;
+}
 
-    .tab.active {
-      background: #c9ad7a;
-      color: #171717;
-      font-weight: bold;
-    }
+.title{
+font-size:48px;
+font-weight:bold;
+margin-top:15px;
+}
 
-    .slider {
-      display: flex;
-      width: 300%;
-      transition: transform 0.35s ease;
-      touch-action: pan-y;
-    }
+.subtitle{
+font-size:32px;
+margin-top:10px;
+font-style:italic;
+}
 
-    .page {
-      width: 33.3333%;
-      padding: 24px 20px 96px;
-    }
+.section-title{
+font-size:42px;
+margin-bottom:20px;
+border-bottom:2px solid #caa45d;
+padding-bottom:10px;
+}
 
-    .page-title {
-      font-size: 26px;
-      margin-bottom: 6px;
-    }
+.menu-item{
+display:flex;
+justify-content:space-between;
+padding:12px 0;
+border-bottom:1px dotted #bfa27b;
+font-size:24px;
+}
 
-    .subtitle {
-      font-size: 13px;
-      color: #806844;
-      margin-bottom: 20px;
-    }
+.image{
+width:100%;
+border-radius:18px;
+margin-top:25px;
+}
 
-    .category {
-      margin-bottom: 26px;
-    }
+.bottom-nav{
+position:fixed;
+bottom:0;
+left:0;
+width:100%;
+background:#111;
+display:flex;
+justify-content:center;
+gap:10px;
+padding:12px;
+z-index:999;
+}
 
-    .category h3 {
-      font-size: 18px;
-      margin-bottom: 10px;
-      color: #2a2118;
-      border-left: 4px solid #c9ad7a;
-      padding-left: 10px;
-    }
+.bottom-nav button{
+padding:12px 18px;
+border:none;
+background:#c89a3d;
+color:#111;
+font-weight:bold;
+border-radius:10px;
+font-size:16px;
+}
 
-    .item {
-      display: flex;
-      justify-content: space-between;
-      gap: 14px;
-      padding: 11px 0;
-      border-bottom: 1px solid #eadccb;
-      font-size: 15px;
-      line-height: 1.25;
-    }
+.contact{
+margin-top:25px;
+font-size:22px;
+line-height:1.8;
+}
 
-    .item strong {
-      white-space: nowrap;
-      color: #111;
-    }
+.qr{
+width:140px;
+margin-top:20px;
+}
 
-    .controls {
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: rgba(255,250,243,0.96);
-      border-top: 1px solid #eadccb;
-      padding: 14px 18px 18px;
-    }
+.small{
+font-size:18px;
+line-height:1.6;
+}
 
-    .dots {
-      display: flex;
-      justify-content: center;
-      gap: 8px;
-      margin-bottom: 12px;
-    }
+.flex{
+display:flex;
+gap:25px;
+align-items:center;
+}
 
-    .dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: #d5c4ae;
-    }
+.half{
+width:50%;
+}
 
-    .dot.active { background: #171717; }
-
-    .nav {
-      display: flex;
-      gap: 10px;
-    }
-
-    .nav button, .call {
-      flex: 1;
-      border: none;
-      background: #171717;
-      color: #fffaf3;
-      padding: 13px;
-      border-radius: 14px;
-      font-size: 14px;
-      text-decoration: none;
-      text-align: center;
-      cursor: pointer;
-    }
-
-    .call {
-      background: #c9ad7a;
-      color: #171717;
-      font-weight: bold;
-    }
-
-    .note {
-      margin-top: 18px;
-      padding: 14px;
-      background: #f2e7d7;
-      border-radius: 16px;
-      font-size: 13px;
-      color: #5d4930;
-      text-align: center;
-    }
-  </style>
+</style>
 </head>
+
 <body>
-  <main class="phone">
-    <header class="top">
-      <h1>MOMENTUM</h1>
-      <p>COFFEE & BISTRO</p>
-    </header>
 
-    <div class="tabs">
-      <button class="tab active" onclick="goTo(0)">☕ Drinks</button>
-      <button class="tab" onclick="goTo(1)">🍕 Food</button>
-      <button class="tab" onclick="goTo(2)">🍰 Dessert</button>
-    </div>
+<div class="slider" id="slider">
 
-    <section class="slider" id="slider">
-      <div class="page">
-        <h2 class="page-title">Coffee & Drinks</h2>
-        <p class="subtitle">Signature coffee, tea and cold drinks</p>
+<!-- PAGE 1 -->
+<section class="page">
 
-        <div class="category">
-          <h3>Coffee</h3>
-          <div class="item"><span>Espresso</span><strong>6,000₮</strong></div>
-          <div class="item"><span>Americano Single</span><strong>7,000₮</strong></div>
-          <div class="item"><span>Americano Double</span><strong>8,000₮</strong></div>
-          <div class="item"><span>Latte</span><strong>9,000₮</strong></div>
-          <div class="item"><span>Spanish Latte</span><strong>12,000₮</strong></div>
-          <div class="item"><span>Green tea Latte</span><strong>9,000₮</strong></div>
-          <div class="item"><span>Mocha Latte</span><strong>12,000₮</strong></div>
-          <div class="item"><span>Cappuccino</span><strong>9,000₮</strong></div>
-          <div class="item"><span>Caramel Cinnamon Macchiato</span><strong>11,500₮</strong></div>
-        </div>
+<div class="top-title">
 
-        <div class="category">
-          <h3>Tea & Cold</h3>
-          <div class="item"><span>Ginger Lemon Tea</span><strong>9,000₮</strong></div>
-          <div class="item"><span>Iced Tea</span><strong>10,000₮</strong></div>
-          <div class="item"><span>Smoothie</span><strong>12,000₮</strong></div>
-          <div class="item"><span>Milkshake</span><strong>12,500₮</strong></div>
-          <div class="item"><span>Sparkling Lemonade</span><strong>9,000₮</strong></div>
-        </div>
-      </div>
+<img src="https://i.imgur.com/YOURLOGO.png" class="logo">
 
-      <div class="page">
-        <h2 class="page-title">Pizza & Pasta</h2>
-        <p class="subtitle">Italian style main menu</p>
+<div class="title">MOMENTUM</div>
 
-        <div class="category">
-          <h3>Pizza</h3>
-          <div class="item"><span>Meat Lovers Pizza</span><strong>58,000₮</strong></div>
-          <div class="item"><span>Pepperoni Pizza</span><strong>56,000₮</strong></div>
-          <div class="item"><span>Chicken BBQ Pizza</span><strong>56,000₮</strong></div>
-          <div class="item"><span>Hawaiian Pizza</span><strong>56,000₮</strong></div>
-          <div class="item"><span>Pizza Slice</span><strong>8,000₮</strong></div>
-        </div>
+<div style="font-size:22px;">COFFEE & BISTRO</div>
 
-        <div class="category">
-          <h3>Pasta</h3>
-          <div class="item"><span>Meatball Pasta</span><strong>18,900₮</strong></div>
-          <div class="item"><span>Carbonara Pasta</span><strong>18,900₮</strong></div>
-          <div class="item"><span>Alfredo Pasta</span><strong>18,900₮</strong></div>
-          <div class="item"><span>Aglio e Olio Pasta</span><strong>16,900₮</strong></div>
-        </div>
-      </div>
+<div class="subtitle gold">
+ИТАЛИ ГАЛ ТОГОО
+</div>
 
-      <div class="page">
-        <h2 class="page-title">Dessert & Breakfast</h2>
-        <p class="subtitle">Morning menu and sweet specials</p>
+<div class="subtitle">
+Жинхэнэ итали амт
+</div>
 
-        <div class="category">
-          <h3>Breakfast</h3>
-          <div class="item"><span>French Toast</span><strong>11,900₮</strong></div>
-          <div class="item"><span>Full English Breakfast</span><strong>18,900₮</strong></div>
-        </div>
+</div>
 
-        <div class="category">
-          <h3>Yogurt & Dessert</h3>
-          <div class="item"><span>Fruit Yogurt</span><strong>5,000₮</strong></div>
-          <div class="item"><span>Berry Shock</span><strong>9,900₮</strong></div>
-          <div class="item"><span>Fruit Creamy Yogurt</span><strong>10,500₮</strong></div>
-          <div class="item"><span>Ice Cream Waffle</span><strong>9,900₮</strong></div>
-          <div class="item"><span>Green Detox</span><strong>10,000₮</strong></div>
-        </div>
+<img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=1200&auto=format&fit=crop" class="image">
 
-        <div class="note">
-          📍 Altjin Bombogor Shopping Center<br>
-          ☎️ 75070666<br>
-          ✉️ Momentumbistrocoffee@gmail.com
-        </div>
-      </div>
-    </section>
+<div class="contact">
 
-    <div class="controls">
-      <div class="dots">
-        <span class="dot active"></span>
-        <span class="dot"></span>
-        <span class="dot"></span>
-      </div>
-      <div class="nav">
-        <button onclick="prevPage()">← Back</button>
-        <a class="call" href="tel:75070666">Call</a>
-        <button onclick="nextPage()">Next →</button>
-      </div>
-    </div>
-  </main>
+📍 Хаяг: Чингэлтэй дүүрэг 2-р хороо<br>
+Жуулчины гудамж<br>
+Алтжин бөмбөгөр худалдааны төв<br><br>
 
-  <script>
-    let current = 0;
-    const slider = document.getElementById('slider');
-    const tabs = document.querySelectorAll('.tab');
-    const dots = document.querySelectorAll('.dot');
+☎️ 75070666<br>
 
-    function update() {
-      slider.style.transform = `translateX(-${current * 33.3333}%)`;
-      tabs.forEach((tab, i) => tab.classList.toggle('active', i === current));
-      dots.forEach((dot, i) => dot.classList.toggle('active', i === current));
-    }
+✉️ Momentumbistrocoffee@gmail.com<br><br>
 
-    function goTo(index) {
-      current = Math.max(0, Math.min(2, index));
-      update();
-    }
+📘 Facebook:<br>
+facebook.com/profile.php?id=61566016979676
 
-    function nextPage() {
-      current = current === 2 ? 0 : current + 1;
-      update();
-    }
+</div>
 
-    function prevPage() {
-      current = current === 0 ? 2 : current - 1;
-      update();
-    }
+<img src="YOUR_QR_IMAGE.png" class="qr">
 
-    let startX = 0;
-    slider.addEventListener('touchstart', e => startX = e.touches[0].clientX);
-    slider.addEventListener('touchend', e => {
-      const endX = e.changedTouches[0].clientX;
-      if (startX - endX > 50) nextPage();
-      if (endX - startX > 50) prevPage();
-    });
-  </script>
+</section>
+
+<!-- PAGE 2 -->
+<section class="page">
+
+<div class="section-title">
+☕ DRINKS
+</div>
+
+<div class="menu-item">
+<span>Espresso</span>
+<span>6,000₮</span>
+</div>
+
+<div class="menu-item">
+<span>Americano</span>
+<span>7,000₮ / 8,000₮</span>
+</div>
+
+<div class="menu-item">
+<span>Latte</span>
+<span>9,000₮ / 10,000₮</span>
+</div>
+
+<div class="menu-item">
+<span>Cappuccino</span>
+<span>9,000₮</span>
+</div>
+
+<div class="menu-item">
+<span>Mocha Latte</span>
+<span>12,000₮</span>
+</div>
+
+<div class="menu-item">
+<span>Spanish Latte</span>
+<span>12,000₮</span>
+</div>
+
+<div class="menu-item">
+<span>Green Tea Latte</span>
+<span>9,000₮</span>
+</div>
+
+<div class="menu-item">
+<span>Caramel Cinnamon Macchiato</span>
+<span>11,500₮</span>
+</div>
+
+<br><br>
+
+<div class="section-title">
+🍰 DESSERT
+</div>
+
+<div class="menu-item">
+<span>Fruit Yogurt</span>
+<span>5,000₮</span>
+</div>
+
+<div class="menu-item">
+<span>Berry Shock</span>
+<span>9,900₮</span>
+</div>
+
+<div class="menu-item">
+<span>Ice Cream Waffle</span>
+<span>9,900₮</span>
+</div>
+
+</section>
+
+<!-- PAGE 3 -->
+<section class="page">
+
+<div class="section-title">
+🥤 COLD & SPECIAL
+</div>
+
+<div class="menu-item">
+<span>Green Detox</span>
+<span>10,000₮</span>
+</div>
+
+<div class="menu-item">
+<span>Wellness Smoothie</span>
+<span>10,000₮</span>
+</div>
+
+<div class="menu-item">
+<span>Ginger Lemon Tea</span>
+<span>10,000₮</span>
+</div>
+
+<div class="menu-item">
+<span>Milkshake</span>
+<span>12,500₮</span>
+</div>
+
+<div class="menu-item">
+<span>Smoothie</span>
+<span>12,000₮</span>
+</div>
+
+<div class="menu-item">
+<span>Iced Tea</span>
+<span>10,000₮</span>
+</div>
+
+<div class="menu-item">
+<span>Sparkling Lemonade</span>
+<span>9,000₮</span>
+</div>
+
+<img src="https://images.unsplash.com/photo-1623065422902-30a2d299bbe4?q=80&w=1200&auto=format&fit=crop" class="image">
+
+</section>
+
+<!-- PAGE 4 -->
+<section class="page">
+
+<div class="section-title">
+🍕 PIZZA & PASTA
+</div>
+
+<div class="menu-item">
+<span>Meat Lovers XL</span>
+<span>58,000₮</span>
+</div>
+
+<div class="menu-item">
+<span>Pepperoni XL</span>
+<span>56,000₮</span>
+</div>
+
+<div class="menu-item">
+<span>Hawaiian Pizza</span>
+<span>56,000₮</span>
+</div>
+
+<div class="menu-item">
+<span>Chicken BBQ Pizza</span>
+<span>49,000₮</span>
+</div>
+
+<br><br>
+
+<div class="menu-item">
+<span>Carbonara Pasta</span>
+<span>16,900₮</span>
+</div>
+
+<div class="menu-item">
+<span>Meatball Pasta</span>
+<span>16,900₮</span>
+</div>
+
+<div class="menu-item">
+<span>Aglio e Olio Pasta</span>
+<span>16,900₮</span>
+</div>
+
+<img src="https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?q=80&w=1200&auto=format&fit=crop" class="image">
+
+</section>
+
+<!-- PAGE 5 -->
+<section class="page">
+
+<div class="section-title">
+🍳 BREAKFAST & SANDWICH
+</div>
+
+<div class="menu-item">
+<span>French Toast</span>
+<span>12,900₮</span>
+</div>
+
+<div class="menu-item">
+<span>Full English Breakfast</span>
+<span>19,900₮</span>
+</div>
+
+<br><br>
+
+<div class="menu-item">
+<span>Ham & Cheese Sandwich</span>
+<span>10,900₮</span>
+</div>
+
+<div class="menu-item">
+<span>Tuna Sandwich</span>
+<span>10,900₮</span>
+</div>
+
+<div class="menu-item">
+<span>Salami Sandwich</span>
+<span>10,900₮</span>
+</div>
+
+<div class="menu-item">
+<span>Tomato Mozzarella Sandwich</span>
+<span>10,900₮</span>
+</div>
+
+<br><br>
+
+<div class="section-title">
+🥗 SALAD
+</div>
+
+<div class="menu-item">
+<span>Caesar Salad</span>
+<span>16,900₮</span>
+</div>
+
+<img src="https://images.unsplash.com/photo-1546793665-c74683f339c1?q=80&w=1200&auto=format&fit=crop" class="image">
+
+</section>
+
+</div>
+
+<div class="bottom-nav">
+<button onclick="move(-1)">◀</button>
+<button onclick="move(1)">▶</button>
+</div>
+
+<script>
+
+let current = 0;
+
+function move(step){
+
+current += step;
+
+if(current < 0) current = 0;
+if(current > 4) current = 4;
+
+document.getElementById("slider").style.transform =
+`translateX(-${current * 100}vw)`;
+
+}
+
+</script>
+
 </body>
 </html>
