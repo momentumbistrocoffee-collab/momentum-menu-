@@ -1,257 +1,196 @@
 <!DOCTYPE html>
 <html lang="mn">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-<title>Momentum Coffee & Bistro QR Menu</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Momentum Coffee & Bistro</title>
 <style>
-:root{
-  --cream:#fbf2df;
-  --cream2:#f4e6cf;
-  --black:#11100d;
-  --gold:#c58a24;
-  --gold2:#d7aa57;
-  --line:#d8b77a;
-  --muted:#6e604b;
-}
+:root{--cream:#fff3dc;--cream2:#f4dfbd;--black:#111;--gold:#bd8122;--line:#d5aa61}
 *{box-sizing:border-box;margin:0;padding:0}
-html,body{height:100%}
-body{
-  background:#0f0d0a;
-  color:var(--black);
-  font-family: Georgia, 'Times New Roman', serif;
-  overflow:hidden;
-}
-.app{
-  width:100vw;
-  height:100dvh;
-  overflow:hidden;
-  position:relative;
-  background:var(--cream);
-}
-.slider{
-  height:100%;
-  display:flex;
-  width:600vw;
-  transition:transform .42s ease;
-  touch-action:pan-y;
-}
-.page{
-  width:100vw;
-  height:100dvh;
-  overflow-y:auto;
-  padding:18px 16px 92px;
-  background:
-    radial-gradient(circle at top, rgba(255,255,255,.55), transparent 32%),
-    linear-gradient(180deg,var(--cream),var(--cream2));
-  border-left:1px solid rgba(197,138,36,.35);
-}
-.frame{
-  min-height:calc(100dvh - 110px);
-  border:1.5px solid var(--gold);
-  border-radius:16px;
-  padding:18px 15px;
-  position:relative;
-  box-shadow:inset 0 0 0 1px rgba(255,255,255,.45);
-}
-.brand{text-align:center}.logo-mark{font-size:70px;font-weight:900;line-height:.8;color:var(--gold)}
-.brand h1{font-size:38px;letter-spacing:1px;margin-top:12px}.brand .sub{font-size:17px;letter-spacing:1.5px;margin-top:4px}
-.gold-line{width:120px;height:2px;background:var(--gold);margin:14px auto}.script{font-family:'Brush Script MT',cursive;font-size:27px;line-height:1.2;margin:12px 0}.headline{font-size:28px;color:var(--gold);font-weight:900;margin-top:14px}.hero-img,.product-img{width:100%;border-radius:18px;margin-top:16px;display:block;border:1px solid rgba(197,138,36,.45)}
-.contact-box{background:var(--black);color:var(--cream);border-radius:14px;padding:14px;margin-top:16px;font-family:Arial,sans-serif;font-size:13px;line-height:1.55}.contact-box b{color:#f2c36b}.contact-row{margin:7px 0}
-.title{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:18px;border-bottom:2px solid var(--gold);padding-bottom:9px}.title h2{font-size:30px;text-transform:uppercase}.title span{font-size:28px}.section{margin:18px 0 24px}.section h3{font-size:22px;text-transform:uppercase;border-bottom:1.5px solid var(--gold);padding-bottom:6px;margin-bottom:10px;display:flex;align-items:center;gap:8px}.item{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px dotted #b99c68;font-size:16px;line-height:1.25}.item small{display:block;font-family:Arial,sans-serif;font-size:11px;color:var(--muted);margin-top:3px}.price{font-weight:900;white-space:nowrap}.pill{display:inline-block;background:var(--black);color:#f2c36b;border-radius:6px;padding:3px 7px;font-size:11px;margin-left:4px}.intro{font-family:Arial,sans-serif;font-size:14px;line-height:1.55;color:#1f1b14}.bullets{margin-top:14px}.bullet{display:flex;gap:10px;align-items:flex-start;margin:10px 0;font-family:Arial,sans-serif;font-size:14px}.bullet i{color:var(--gold);font-style:normal;font-weight:bold}.nav{position:fixed;left:0;right:0;bottom:0;background:var(--black);border-top:2px solid var(--gold);padding:10px 10px 12px;z-index:20}.tabs{display:grid;grid-template-columns:repeat(6,1fr);gap:5px;margin-bottom:8px}.tabs button{border:1px solid rgba(215,170,87,.55);background:#1a1712;color:#ead3a1;border-radius:999px;padding:8px 2px;font-size:11px;font-weight:700}.tabs button.active{background:var(--gold);color:#111}.arrows{display:grid;grid-template-columns:1fr 1.4fr 1fr;gap:8px}.arrows button,.arrows a{border:none;border-radius:12px;padding:11px 6px;text-align:center;text-decoration:none;font-size:14px;font-weight:900}.dark{background:#28231b;color:var(--cream)}.call{background:#f2c36b;color:#111}.footer-strip{margin-top:18px;background:var(--black);color:#d7aa57;border-radius:12px;padding:10px;text-align:center;font-size:12px;letter-spacing:.5px}.qr-note{font-family:Arial,sans-serif;text-align:center;font-size:12px;color:var(--muted);margin-top:10px}
-@media(min-width:700px){.page{padding:24px 22vw 100px}.brand h1{font-size:48px}.title h2{font-size:38px}}
+body{font-family:Georgia,serif;background:#111;color:#111;overflow:hidden}
+.slider{display:flex;width:600vw;height:100dvh;transition:.4s}
+.page{width:100vw;height:100dvh;overflow-y:auto;padding:16px 14px 95px;background:linear-gradient(var(--cream),var(--cream2))}
+.frame{border:2px solid var(--gold);border-radius:18px;min-height:calc(100dvh - 115px);padding:18px;background:rgba(255,255,255,.25)}
+h1{text-align:center;font-size:42px}
+.logo{text-align:center;font-size:70px;color:var(--gold);font-weight:900}
+.sub{text-align:center;letter-spacing:2px}
+.gold{text-align:center;color:var(--gold);font-size:28px;font-weight:900;margin-top:20px}
+.script{text-align:center;font-family:cursive;font-size:30px;margin:10px}
+.line{height:2px;background:var(--gold);width:130px;margin:15px auto}
+.title{text-align:center;border-bottom:2px solid var(--gold);padding-bottom:10px;margin-bottom:18px;font-size:30px;text-transform:uppercase}
+.section{margin:20px 0}
+.section h3{font-size:22px;border-bottom:1px solid var(--gold);padding-bottom:6px;margin-bottom:10px}
+.item{display:flex;justify-content:space-between;gap:12px;border-bottom:1px dotted #aa8956;padding:9px 0;font-size:16px}
+.item small{display:block;font-size:11px;color:#6b5b43;margin-top:3px;font-family:Arial}
+.price{font-weight:bold;white-space:nowrap}
+.box{background:#111;color:#fff3dc;border-radius:14px;padding:14px;margin-top:20px;font-family:Arial;font-size:13px;line-height:1.6}
+.box b{color:#f4c15d}
+.visual{height:220px;border-radius:18px;border:1px solid var(--gold);background:linear-gradient(135deg,#fff8e8,#e0bb7b);display:flex;align-items:center;justify-content:center;font-size:70px;margin:18px 0;text-align:center}
+.intro{font-family:Arial;font-size:14px;line-height:1.55}
+.nav{position:fixed;bottom:0;left:0;right:0;background:#111;border-top:2px solid var(--gold);padding:10px;z-index:9}
+.tabs{display:grid;grid-template-columns:repeat(6,1fr);gap:5px;margin-bottom:8px}
+.tabs button{font-size:10px;padding:8px 2px;border-radius:20px;border:1px solid var(--gold);background:#211b13;color:#f3d59a}
+.tabs button.active{background:var(--gold);color:#111;font-weight:bold}
+.arrows{display:grid;grid-template-columns:1fr 1.4fr 1fr;gap:8px}
+.arrows button,.arrows a{padding:12px;border-radius:12px;border:0;text-align:center;text-decoration:none;font-weight:bold}
+.dark{background:#2a241b;color:white}.call{background:#f4c15d;color:#111}
 </style>
 </head>
 <body>
-<div class="app">
-  <main class="slider" id="slider">
 
-    <!-- 1. COVER -->
-    <section class="page">
-      <div class="frame">
-        <div class="brand">
-          <div class="logo-mark">M</div>
-          <h1>MOMENTUM</h1>
-          <div class="sub">COFFEE & BISTRO</div>
-          <div class="gold-line"></div>
-          <div class="headline">ИТАЛИ ГАЛ ТОГОО</div>
-          <div class="script">Жинхэнэ итали амт</div>
-        </div>
-        <img class="hero-img" src="cover-coffee.png" alt="Momentum coffee">
-        <div class="contact-box">
-          <div class="contact-row">📍 <b>Хаяг:</b> Чингэлтэй дүүрэг 2-р хороо, Жуулчны гудамж, Алтжин бөмбөгөр худалдааны төв</div>
-          <div class="contact-row">☎️ <b>Утас:</b> 75070666</div>
-          <div class="contact-row">📘 <b>Facebook:</b> facebook.com/profile.php?id=61566016979676</div>
-          <div class="contact-row">📸 <b>Instagram:</b> @momentum.coffee.bistro</div>
-          <div class="contact-row">✉️ <b>Email:</b> Momentumbistrocoffee@gmail.com</div>
-        </div>
-        <div class="footer-strip">FRESHLY MADE • LOCALLY LOVED • GREAT COFFEE</div>
-      </div>
-    </section>
+<div class="slider" id="slider">
 
-    <!-- 2. TORALDO -->
-    <section class="page">
-      <div class="frame">
-        <div class="title"><span>☕</span><h2>Toraldo Bluette</h2></div>
-        <img class="product-img" src="toraldo-bluette.png" alt="Toraldo Bluette coffee beans">
-        <div class="section">
-          <h3>🇮🇹 Италийн кофены үр</h3>
-          <p class="intro">Манай Momentum Coffee & Bistro нь <b>Toraldo Bluette</b> кофены үрийг ашигладаг. Энэ нь итали espresso-д тохирсон, өтгөн crema, тэнцвэртэй амт, бага хүчиллэг мэдрэмжтэй blend юм.</p>
-          <div class="bullets">
-            <div class="bullet"><i>●</i><span>60% Arabica / 40% Robusta — тэнцвэртэй body</span></div>
-            <div class="bullet"><i>●</i><span>Бага хүчиллэг, зөөлөн aftertaste</span></div>
-            <div class="bullet"><i>●</i><span>Өтгөн crema, сүүтэй кофенд тохиромжтой</span></div>
-            <div class="bullet"><i>●</i><span>Latte, Cappuccino, Americano, Spanish Latte-д ашиглана</span></div>
-          </div>
-        </div>
-        <div class="section">
-          <h3>TORALDO BRAND</h3>
-          <p class="intro">Toraldo нь Италийн Неаполь хотын espresso соёл, уламжлалт roast технологи, итали кофены амтыг илэрхийлдэг брэнд. Манайх кофены амтаа premium, classic итали чиглэлд барьж байна.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- 3. DRINKS -->
-    <section class="page">
-      <div class="frame">
-        <div class="title"><span>☕</span><h2>Drinks</h2></div>
-        <div class="section">
-          <h3>☕ Coffee</h3>
-          <div class="item"><span>Espresso</span><span class="price">6,000₮</span></div>
-          <div class="item"><span>Americano</span><span class="price">7,000₮ / 8,000₮</span></div>
-          <div class="item"><span>Latte<small>Hazelnut, Vanilla, Almond, Caramel +1,000₮</small></span><span class="price">9,000₮ / 10,000₮</span></div>
-          <div class="item"><span>Cappuccino</span><span class="price">9,000₮</span></div>
-          <div class="item"><span>Mocha Latte</span><span class="price">12,000₮</span></div>
-          <div class="item"><span>Spanish Latte</span><span class="price">12,000₮</span></div>
-          <div class="item"><span>Green Tea Latte</span><span class="price">9,000₮</span></div>
-          <div class="item"><span>Caramel Cinnamon Macchiato</span><span class="price">11,500₮</span></div>
-        </div>
-        <div class="section">
-          <h3>🍃 Tea</h3>
-          <div class="item"><span>Breakfast Tea</span><span class="price">6,000₮</span></div>
-          <div class="item"><span>Earl Grey</span><span class="price">6,000₮</span></div>
-          <div class="item"><span>Green Tea</span><span class="price">6,000₮</span></div>
-        </div>
-        <div class="section">
-          <h3>🍰 Dessert</h3>
-          <div class="item"><span>Creamy Yogurt</span><span class="price">4,000₮</span></div>
-          <div class="item"><span>Fruit Yogurt</span><span class="price">5,000₮</span></div>
-          <div class="item"><span>Berry Shock<small>Mixed berries, yogurt, honey & mint</small></span><span class="price">9,900₮</span></div>
-          <div class="item"><span>Antioxidant Wellness Bowl</span><span class="price">10,500₮</span></div>
-          <div class="item"><span>Fruit Creamy Yogurt</span><span class="price">10,500₮</span></div>
-          <div class="item"><span>Pfalzgraff Blueberry Cheesecake</span><span class="price">14,900₮</span></div>
-          <div class="item"><span>Pfalzgraff Cheesecake New York Style</span><span class="price">14,900₮</span></div>
-          <div class="item"><span>Pfalzgraff Strawberry Tarte</span><span class="price">14,900₮</span></div>
-          <div class="item"><span>Ice Cream Waffle</span><span class="price">9,900₮</span></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 4. COLD & SPECIAL -->
-    <section class="page">
-      <div class="frame">
-        <div class="title"><span>🥤</span><h2>Cold & Special</h2></div>
-        <div class="section">
-          <h3>Special Menu</h3>
-          <div class="item"><span>Green Detox<small>Apple, cucumber, spinach, celery & lemon</small></span><span class="price">10,000₮</span></div>
-          <div class="item"><span>Wellness Smoothie<small>Mixed berries, banana, yogurt & chia seeds</small></span><span class="price">10,000₮</span></div>
-          <div class="item"><span>Ginger Lemon Tea<small>Fresh ginger, lemon, honey & mint</small></span><span class="price">10,000₮</span></div>
-        </div>
-        <img class="product-img" src="cold-special.png" alt="Cold and special drinks">
-        <div class="section">
-          <h3>Smoothie</h3>
-          <div class="item"><span>Smoothie</span><span class="price">12,000₮</span></div>
-          <div class="item"><span>Iced Tea</span><span class="price">10,000₮</span></div>
-          <div class="item"><span>Sparkling Lemonade</span><span class="price">9,000₮</span></div>
-        </div>
-        <div class="section">
-          <h3>Milkshake & Soft Drink</h3>
-          <div class="item"><span>Milkshake</span><span class="price">12,500₮</span></div>
-          <div class="item"><span>Coca-Cola</span><span class="price">5,000₮</span></div>
-          <div class="item"><span>Fanta</span><span class="price">5,000₮</span></div>
-          <div class="item"><span>Sprite</span><span class="price">5,000₮</span></div>
-          <div class="item"><span>Fresh Juice</span><span class="price">9,000₮</span></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 5. PIZZA & PASTA -->
-    <section class="page">
-      <div class="frame">
-        <div class="title"><span>🍕</span><h2>Pizza & Pasta</h2></div>
-        <div class="section">
-          <h3>Pizza</h3>
-          <div class="item"><span>Meat Lovers <span class="pill">XL</span></span><span class="price">58,000₮</span></div>
-          <div class="item"><span>Pepperoni <span class="pill">XL</span></span><span class="price">56,000₮</span></div>
-          <div class="item"><span>Hawaiian Pizza <span class="pill">XL</span></span><span class="price">56,000₮</span></div>
-          <div class="item"><span>Chicken BBQ Pizza <span class="pill">XL</span></span><span class="price">49,000₮</span></div>
-          <div class="item"><span>Regular</span><span class="price">17,900₮</span></div>
-          <div class="item"><span>Slice</span><span class="price">8,000₮</span></div>
-        </div>
-        <img class="product-img" src="pizza-pasta.png" alt="Pizza and pasta">
-        <div class="section">
-          <h3>Pasta</h3>
-          <div class="item"><span>Carbonara Pasta</span><span class="price">16,900₮</span></div>
-          <div class="item"><span>Meatball Pasta</span><span class="price">16,900₮</span></div>
-          <div class="item"><span>Aglio e Olio Pasta</span><span class="price">16,900₮</span></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 6. BREAKFAST / SANDWICH / SALAD -->
-    <section class="page">
-      <div class="frame">
-        <div class="title"><span>🍴</span><h2>Breakfast & Salad</h2></div>
-        <div class="section">
-          <h3>Breakfast</h3>
-          <div class="item"><span>French Toast</span><span class="price">12,900₮</span></div>
-          <div class="item"><span>Full English Breakfast</span><span class="price">19,900₮</span></div>
-        </div>
-        <div class="section">
-          <h3>Sandwich</h3>
-          <div class="item"><span>Ham & Cheese Sandwich</span><span class="price">10,900₮</span></div>
-          <div class="item"><span>Tuna Sandwich</span><span class="price">10,900₮</span></div>
-          <div class="item"><span>Salami Sandwich</span><span class="price">10,900₮</span></div>
-          <div class="item"><span>Tomato Mozzarella Sandwich</span><span class="price">10,900₮</span></div>
-        </div>
-        <img class="product-img" src="breakfast-sandwich-salad.png" alt="Breakfast sandwich salad">
-        <div class="section">
-          <h3>Salad</h3>
-          <div class="item"><span>Caesar Salad</span><span class="price">16,900₮</span></div>
-          <div class="item"><span>Summer Salad</span><span class="price">16,900₮</span></div>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <nav class="nav">
-    <div class="tabs">
-      <button class="active" onclick="goTo(0)">Cover</button>
-      <button onclick="goTo(1)">Toraldo</button>
-      <button onclick="goTo(2)">Drinks</button>
-      <button onclick="goTo(3)">Cold</button>
-      <button onclick="goTo(4)">Pizza</button>
-      <button onclick="goTo(5)">Food</button>
-    </div>
-    <div class="arrows">
-      <button class="dark" onclick="prevPage()">← Back</button>
-      <a class="call" href="tel:75070666">Call 75070666</a>
-      <button class="dark" onclick="nextPage()">Next →</button>
-    </div>
-  </nav>
+<section class="page"><div class="frame">
+<div class="logo">M</div>
+<h1>MOMENTUM</h1>
+<div class="sub">COFFEE & BISTRO</div>
+<div class="line"></div>
+<div class="gold">ИТАЛИ ГАЛ ТОГОО</div>
+<div class="script">Жинхэнэ итали амт</div>
+<div class="visual">☕ 🫘</div>
+<div class="box">
+📍 <b>Хаяг:</b> Чингэлтэй дүүрэг 2-р хороо, Жуулчны гудамж, Алтжин бөмбөгөр худалдааны төв<br>
+☎️ <b>Утас:</b> 75070666<br>
+📘 <b>Facebook:</b> facebook.com/profile.php?id=61566016979676<br>
+📸 <b>Instagram:</b> @momentum.coffee.bistro<br>
+✉️ <b>Email:</b> Momentumbistrocoffee@gmail.com
 </div>
+</div></section>
+
+<section class="page"><div class="frame">
+<div class="title">☕ Toraldo Bluette</div>
+<div class="visual">TORALDO<br>BLUETTE</div>
+<div class="section">
+<h3>Италийн кофены үр</h3>
+<p class="intro">Манай Momentum Coffee & Bistro нь <b>Toraldo Bluette</b> кофены үрийг ашигладаг. Энэ нь итали espresso-д тохирсон, өтгөн crema, тэнцвэртэй амт, бага хүчиллэг мэдрэмжтэй blend юм.</p>
+</div>
+<div class="section">
+<h3>Toraldo Brand</h3>
+<p class="intro">Toraldo нь Италийн espresso соёл, уламжлалт roast технологи, итали кофены амтыг илэрхийлдэг брэнд.</p>
+</div>
+</div></section>
+
+<section class="page"><div class="frame">
+<div class="title">☕ Drinks</div>
+<div class="section"><h3>Coffee</h3>
+<div class="item"><span>Espresso</span><span class="price">6,000₮</span></div>
+<div class="item"><span>Americano</span><span class="price">7,000₮ / 8,000₮</span></div>
+<div class="item"><span>Latte<small>Hazelnut, Vanilla, Almond, Caramel +1,000₮</small></span><span class="price">9,000₮ / 10,000₮</span></div>
+<div class="item"><span>Cappuccino</span><span class="price">9,000₮</span></div>
+<div class="item"><span>Mocha Latte</span><span class="price">12,000₮</span></div>
+<div class="item"><span>Spanish Latte</span><span class="price">12,000₮</span></div>
+<div class="item"><span>Green Tea Latte</span><span class="price">9,000₮</span></div>
+<div class="item"><span>Caramel Cinnamon Macchiato</span><span class="price">11,500₮</span></div>
+</div>
+<div class="section"><h3>Tea</h3>
+<div class="item"><span>Breakfast Tea</span><span class="price">6,000₮</span></div>
+<div class="item"><span>Earl Grey</span><span class="price">6,000₮</span></div>
+<div class="item"><span>Green Tea</span><span class="price">6,000₮</span></div>
+</div>
+<div class="section"><h3>Dessert</h3>
+<div class="item"><span>Creamy Yogurt</span><span class="price">4,000₮</span></div>
+<div class="item"><span>Fruit Yogurt</span><span class="price">5,000₮</span></div>
+<div class="item"><span>Berry Shock</span><span class="price">9,900₮</span></div>
+<div class="item"><span>Antioxidant Wellness Bowl</span><span class="price">10,500₮</span></div>
+<div class="item"><span>Fruit Creamy Yogurt</span><span class="price">10,500₮</span></div>
+<div class="item"><span>Ice Cream Waffle</span><span class="price">9,900₮</span></div>
+</div>
+</div></section>
+
+<section class="page"><div class="frame">
+<div class="title">🥤 Cold & Special</div>
+<div class="section"><h3>Special Menu</h3>
+<div class="item"><span>Green Detox<small>Apple, cucumber, spinach, celery & lemon</small></span><span class="price">10,000₮</span></div>
+<div class="item"><span>Wellness Smoothie<small>Mixed berries, banana, yogurt & chia seeds</small></span><span class="price">10,000₮</span></div>
+<div class="item"><span>Ginger Lemon Tea<small>Fresh ginger, lemon, honey & mint</small></span><span class="price">10,000₮</span></div>
+</div>
+<div class="visual">🥤 🍓 🍋</div>
+<div class="section"><h3>Cold Drinks</h3>
+<div class="item"><span>Smoothie</span><span class="price">12,000₮</span></div>
+<div class="item"><span>Milkshake</span><span class="price">12,500₮</span></div>
+<div class="item"><span>Iced Tea</span><span class="price">10,000₮</span></div>
+<div class="item"><span>Sparkling Lemonade</span><span class="price">9,000₮</span></div>
+<div class="item"><span>Coca-Cola / Fanta / Sprite</span><span class="price">5,000₮</span></div>
+<div class="item"><span>Fresh Juice</span><span class="price">9,000₮</span></div>
+</div>
+</div></section>
+
+<section class="page"><div class="frame">
+<div class="title">🍕 Pizza & Pasta</div>
+<div class="section"><h3>Pizza</h3>
+<div class="item"><span>Meat Lovers XL</span><span class="price">58,000₮</span></div>
+<div class="item"><span>Pepperoni XL</span><span class="price">56,000₮</span></div>
+<div class="item"><span>Hawaiian Pizza XL</span><span class="price">56,000₮</span></div>
+<div class="item"><span>Chicken BBQ Pizza XL</span><span class="price">49,000₮</span></div>
+<div class="item"><span>Regular Pizza</span><span class="price">17,900₮</span></div>
+<div class="item"><span>Pizza Slice</span><span class="price">8,000₮</span></div>
+</div>
+<div class="visual">🍕 🍝</div>
+<div class="section"><h3>Pasta</h3>
+<div class="item"><span>Carbonara Pasta</span><span class="price">16,900₮</span></div>
+<div class="item"><span>Meatball Pasta</span><span class="price">16,900₮</span></div>
+<div class="item"><span>Aglio e Olio Pasta</span><span class="price">16,900₮</span></div>
+</div>
+</div></section>
+
+<section class="page"><div class="frame">
+<div class="title">🍴 Breakfast & Salad</div>
+<div class="section"><h3>Breakfast</h3>
+<div class="item"><span>French Toast</span><span class="price">12,900₮</span></div>
+<div class="item"><span>Full English Breakfast</span><span class="price">19,900₮</span></div>
+</div>
+<div class="section"><h3>Sandwich</h3>
+<div class="item"><span>Ham & Cheese Sandwich</span><span class="price">10,900₮</span></div>
+<div class="item"><span>Tuna Sandwich</span><span class="price">10,900₮</span></div>
+<div class="item"><span>Salami Sandwich</span><span class="price">10,900₮</span></div>
+<div class="item"><span>Tomato Mozzarella Sandwich</span><span class="price">10,900₮</span></div>
+</div>
+<div class="visual">🍳 🥪 🥗</div>
+<div class="section"><h3>Salad</h3>
+<div class="item"><span>Caesar Salad</span><span class="price">16,900₮</span></div>
+<div class="item"><span>Summer Salad</span><span class="price">16,900₮</span></div>
+</div>
+</div></section>
+
+</div>
+
+<div class="nav">
+<div class="tabs">
+<button class="active" onclick="goTo(0)">Cover</button>
+<button onclick="goTo(1)">Toraldo</button>
+<button onclick="goTo(2)">Drinks</button>
+<button onclick="goTo(3)">Cold</button>
+<button onclick="goTo(4)">Pizza</button>
+<button onclick="goTo(5)">Food</button>
+</div>
+<div class="arrows">
+<button class="dark" onclick="prev()">← Back</button>
+<a class="call" href="tel:75070666">Call 75070666</a>
+<button class="dark" onclick="next()">Next →</button>
+</div>
+</div>
+
 <script>
 let current=0;
-const slider=document.getElementById('slider');
-const tabs=document.querySelectorAll('.tabs button');
-function update(){slider.style.transform=`translateX(-${current*100}vw)`;tabs.forEach((b,i)=>b.classList.toggle('active',i===current));}
-function goTo(i){current=Math.max(0,Math.min(5,i));update();}
-function nextPage(){current=current===5?0:current+1;update();}
-function prevPage(){current=current===0?5:current-1;update();}
+const slider=document.getElementById("slider");
+const tabs=document.querySelectorAll(".tabs button");
+
+function update(){
+slider.style.transform=`translateX(-${current*100}vw)`;
+tabs.forEach((b,i)=>b.classList.toggle("active",i===current));
+}
+function goTo(i){current=i;update();}
+function next(){current=current===5?0:current+1;update();}
+function prev(){current=current===0?5:current-1;update();}
+
 let startX=0;
-slider.addEventListener('touchstart',e=>startX=e.touches[0].clientX,{passive:true});
-slider.addEventListener('touchend',e=>{let endX=e.changedTouches[0].clientX;if(startX-endX>45)nextPage();if(endX-startX>45)prevPage();});
+slider.addEventListener("touchstart",e=>startX=e.touches[0].clientX);
+slider.addEventListener("touchend",e=>{
+let endX=e.changedTouches[0].clientX;
+if(startX-endX>50)next();
+if(endX-startX>50)prev();
+});
 </script>
+
 </body>
 </html>
